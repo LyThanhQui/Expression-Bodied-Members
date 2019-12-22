@@ -83,18 +83,41 @@ namespace Expression_Bodied_Members
       }
       */
     //Read-only properties that use an expression body definition
-    public class Location
+    /* public class Location
+     {
+         private string locationName;
+         public Location(string name) => locationName = name;
+         public string Name => locationName;
+     }
+     class Program
+     {
+         static void Main()
+         {
+             Location location = new Location("Qui");
+             Console.WriteLine(location.Name);
+             Console.WriteLine("Press any key to exists");
+             Console.ReadKey();
+         }
+     }*/
+    //Indexers
+
+    public class Sports
     {
-        private string locationName;
-        public Location(string name) => locationName = name;
-        public string Name => locationName;
+        private string[] types = {"Cricket", "Baseball", "Basketball", "Football",
+                              "Hockey", "Soccer", "Tennis","Volleyball" };
+        public string this[int i]
+        {
+            get => types[i];
+            set => types[i] = value;
+        }
     }
     class Program
     {
         static void Main()
         {
-            Location location = new Location("Mumbai");
-            Console.WriteLine(location.Name);
+            Sports sports = new Sports();
+            Console.WriteLine(sports[4]);
+            Console.WriteLine(sports[2]);
             Console.WriteLine("Press any key to exists");
             Console.ReadKey();
         }
