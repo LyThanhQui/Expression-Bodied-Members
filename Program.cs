@@ -36,27 +36,67 @@ namespace Expression_Bodied_Members
     }
     */
     //2. Contrutors & Detructors
+    /* public class Location
+      {
+          private string locationName;
+          public Location(string name) => locationName = name;
+          ~Location() => Console.WriteLine($"Location{ locationName }is destructor");
+          public string Name
+          {
+              get => locationName;
+              set => locationName = value;
+          }
+      }
+      class Program
+      {
+          static void Main()
+          {
+              Location location = new Location("Qui");
+              Console.WriteLine(location.Name = "Thanh Qui");  
+              Console.WriteLine("Press any key to exists");
+              Console.ReadKey();
+          }
+      }
+      */
+    //3. Property get
+    /*  public class Location
+      {
+          private string locationName;
+          public Location(string name) => locationName = name;
+          public string Name
+          {
+              get => locationName;
+              set => locationName = value;
+          }
+      }
+      class Program
+      {
+          static void Main()
+          {
+              Location location = new Location("Qui");
+              Console.WriteLine(location.Name);
+              Console.WriteLine("Press any key to exists");
+              Console.ReadKey();
+          }
+
+
+      }
+      */
+    //Read-only properties that use an expression body definition
     public class Location
     {
         private string locationName;
         public Location(string name) => locationName = name;
-        ~Location() => Console.WriteLine($"Location{ locationName }is destructor");
-        public string Name
-        {
-            get => locationName;
-            set => locationName = value;
-        }
+        public string Name => locationName;
     }
     class Program
     {
         static void Main()
         {
-            Location location = new Location("Qui");
-            Console.WriteLine(location.Name = "Thanh Qui");  
+            Location location = new Location("Mumbai");
+            Console.WriteLine(location.Name);
             Console.WriteLine("Press any key to exists");
             Console.ReadKey();
         }
     }
-    
-    
 }
