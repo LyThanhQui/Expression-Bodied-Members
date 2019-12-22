@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Expression_Bodied_Members
 {
@@ -101,25 +102,55 @@ namespace Expression_Bodied_Members
      }*/
     //Indexers
 
-    public class Sports
-    {
-        private string[] types = {"Cricket", "Baseball", "Basketball", "Football",
-                              "Hockey", "Soccer", "Tennis","Volleyball" };
-        public string this[int i]
-        {
-            get => types[i];
-            set => types[i] = value;
-        }
-    }
+    /* public class Sports
+     {
+         private string[] types = {"Cricket", "Baseball", "Basketball", "Football",
+                               "Hockey", "Soccer", "Tennis","Volleyball" };
+         public string this[int i]
+         {
+             get => types[i];
+             set => types[i] = value;
+         }
+     }
+     class Program
+     {
+         static void Main()
+         {
+             Sports sports = new Sports();
+             Console.WriteLine(sports[4]);
+             Console.WriteLine(sports[2]);
+             Console.WriteLine("Press any key to exists");
+             Console.ReadKey();
+         }
+     }*/
+    //Expression bodied Members in C#: getters  and setters
     class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
-            Sports sports = new Sports();
-            Console.WriteLine(sports[4]);
-            Console.WriteLine(sports[2]);
-            Console.WriteLine("Press any key to exists");
+            var obj = new ExprBodiedGettersnSetters();
+            obj.EmpBasicSalaryList.Add(101, 1000);
+            obj.EmpBasicSalaryList.Add(102, 1400);
+            obj.EmpId = 101;
+            Console.WriteLine($"The basic salary of EmpId {obj.EmpId} is: {obj.EmpBasicSalary}");
+            obj.EmpId = 102;
+           obj.EmpBasicSalary = 1600;
+            Console.WriteLine($"The updated basic salary of EmpId {obj.EmpId} is: {obj.EmpBasicSalary}");
+           
+            Console.WriteLine("Press any key to exist.");
             Console.ReadKey();
+        }
+    }
+    class ExprBodiedGettersnSetters
+    {
+        public Dictionary<int, double> EmpBasicSalaryList = new Dictionary<int, double>();
+        public int EmpId { get; set; }
+        public double EmpBasicSalary
+        {
+            ///Expression Bodied Getter  
+            get => EmpBasicSalaryList[EmpId];
+            ///Expression Bodied Setter  
+            set => EmpBasicSalaryList[EmpId] = value;
         }
     }
 }
